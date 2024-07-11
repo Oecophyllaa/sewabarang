@@ -209,7 +209,7 @@
                     <p class="font-bold text-xl leading-[30px]">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                     <p class="text-sm leading-[21px]">/day</p>
                 </div>
-                <a href="booking.html" class="rounded-full p-[12px_24px] bg-[#FCCF2F] font-bold w-fit">Rent Now</a>
+                <a href="{{ route('front.booking', $product->slug) }}" class="rounded-full p-[12px_24px] bg-[#FCCF2F] font-bold w-fit">Rent Now</a>
             </div>
         </div>
     </main>

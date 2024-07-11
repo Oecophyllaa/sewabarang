@@ -3,29 +3,35 @@ const minus = document.getElementById("Minus");
 const plus = document.getElementById("Plus");
 const count = document.getElementById("CountDays");
 const days = document.getElementById("Days");
+const duration = document.getElementById("duration");
 const totalPrice = document.getElementById("Total");
-const defaultPrice = 1250000;
+
+const productPrice = document.getElementById("productPrice");
+
+const defaultPrice = productPrice.value;
 
 function updateTotalPrice() {
     let subTotal = days.value * defaultPrice;
-    totalPrice.innerText = "Rp " + subTotal.toLocaleString('id-ID');
+    totalPrice.innerText = "Rp " + subTotal.toLocaleString("id-ID");
 }
 
-minus.addEventListener("click", function() {
+minus.addEventListener("click", function () {
     let currentCount = parseInt(count.innerText);
     if (currentCount > 1) {
         currentCount -= 1;
         count.innerText = currentCount;
         days.value = currentCount;
+        duration.value = currentCount;
         updateTotalPrice();
     }
 });
 
-plus.addEventListener("click", function() {
+plus.addEventListener("click", function () {
     let currentCount = parseInt(count.innerText);
     currentCount += 1;
     count.innerText = currentCount;
     days.value = currentCount;
+    duration.value = currentCount;
     updateTotalPrice();
 });
 
@@ -37,16 +43,16 @@ days.addEventListener("change", function () {
 updateTotalPrice();
 
 // funtion date
-const datePicker = document.getElementById('date');
-const btnText = document.getElementById('DateTriggerBtn');
+const datePicker = document.getElementById("date");
+const btnText = document.getElementById("DateTriggerBtn");
 
-datePicker.addEventListener('change', function () {
+datePicker.addEventListener("change", function () {
     if (datePicker.value) {
-        btnText.innerText = datePicker.value
+        btnText.innerText = datePicker.value;
         btnText.classList.add("font-semibold");
     } else {
-        btnText.innerText = "Select date"
-        btnText.classList.remove("font-semibold"); 
+        btnText.innerText = "Select date";
+        btnText.classList.remove("font-semibold");
     }
 });
 
@@ -64,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active", "ring-2", "ring-[#FCCF2F]");
         }
-        
+
         document.getElementById(pageName).classList.remove("hidden");
         elmnt.classList.add("active", "ring-2", "ring-[#FCCF2F]");
     };
@@ -75,20 +81,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // funtion for changing required atribute
 function toggleRequiredOptions() {
-    const pickupRadio = document.getElementById('Pickup');
-    const deliveryRadio = document.getElementById('Delivery');
-    const storeRadios = document.getElementsByName('store');
-    const addressTextarea = document.getElementsByName('address')[0];
+    const pickupRadio = document.getElementById("Pickup");
+    const deliveryRadio = document.getElementById("Delivery");
+    const storeRadios = document.getElementsByName("store");
+    const addressTextarea = document.getElementsByName("address")[0];
 
     if (pickupRadio.checked) {
-        storeRadios.forEach(radio => {
+        storeRadios.forEach((radio) => {
             radio.required = true;
         });
-        addressTextarea.required = false;
+        // addressTextarea.required = false;
+        addressTextarea.value = "Diambil ditoko saja";
     } else if (deliveryRadio.checked) {
-        storeRadios.forEach(radio => {
+        storeRadios.forEach((radio) => {
             radio.required = false;
         });
-        addressTextarea.required = true;
+        // addressTextarea.required = true;
+        addressTextarea.value = "";
     }
 }
