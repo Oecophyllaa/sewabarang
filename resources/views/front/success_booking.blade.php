@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
+@extends('front.layouts.app')
+@section('title', 'Booking Success')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('output.css') }}" rel="stylesheet" />
-    <link href="{{ asset('main.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-</head>
-
-<body>
+@section('content')
     <main class="max-w-[640px] mx-auto min-h-screen flex flex-col relative has-[#Bottom-nav]:pb-[144px]">
         <section id="finishBook" class="flex flex-col gap-[30px] max-w-[353px] p-[30px_20px] items-center m-auto">
             <div class="flex flex-col gap-2 items-center">
@@ -39,6 +31,4 @@
             </div>
         </section>
     </main>
-</body>
-
-</html>
+@endsection
