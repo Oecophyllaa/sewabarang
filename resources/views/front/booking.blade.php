@@ -60,10 +60,19 @@
                 <img src="{{ asset('assets/images/backgrounds/promo.png') }}" class="w-full h-full object-cover" alt="promo" />
             </div>
         </a>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="py-3 w-full rounded-3xl text-danger text-center">
+                    {{ $error }}
+                </div>
+            @endforeach
+        @endif
         <form action="{{ route('front.booking_save', $product->slug) }}" method="POST" class="flex flex-col gap-[30px] mt-[30px]">
             @csrf
             <input type="hidden" value="{{ $product->price }}" id="productPrice" />
+            <input type="hidden" name="delivery_type" value="pickup" id="deliveryType" />
             <input type="hidden" name="duration" id="duration" value="1" class="absolute -z-10 opacity-0 w-1" required />
+            <input type="hidden" name="store_id" id="storeId" value="" required />
             <div class="flex items-center justify-between px-5">
                 <label for="days" class="font-semibold">How many days?</label>
                 <div class="flex items-center gap-3 relative">
